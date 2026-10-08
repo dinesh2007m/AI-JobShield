@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI JobShield | Check a job offer for fraud signals</title>
+  <meta name="description" content="AI JobShield reads a job offer or recruitment message and shows a risk score, the red flags it found, and what to do next.">
+  <meta name="theme-color" content="#0D1B2A">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 4 7v8c0 7.5 5 12.7 12 15 7-2.3 12-7.5 12-15V7z' fill='%236CB6FF'/%3E%3Cpath d='M10.5 16.5l4 4 7-8' fill='none' stroke='%2306121F' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#analyzer">Skip to the analyzer</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="#home" aria-label="AI JobShield home">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path d="M16 2 4 7v8c0 7.5 5 12.7 12 15 7-2.3 12-7.5 12-15V7z" fill="currentColor"/>
+          <path d="M10.5 16.5l4 4 7-8" fill="none" stroke="#06121F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-name">AI JobShield</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#analyzer">Analyzer</a>
+      </nav>
+      <p class="engine-status" id="engine-status" data-mode="local">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="engine-status-text">Local engine ready</span>
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Home -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>Check a job offer before you reply to it.</h1>
+          <p class="lead">AI JobShield reads a recruitment message and shows which phrases look like fraud, why they matter, and what to do next.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#analyzer">Analyze Job Offer</a>
+            <a class="btn btn-secondary" href="#how">How it works</a>
+          </div>
+        </div>
+
+        <figure class="demo scan" aria-labelledby="demo-caption">
+          <figcaption id="demo-caption" class="demo-caption">Example message, scanned live in your browser</figcaption>
+          <p class="demo-message" id="demo-message"></p>
+          <div class="demo-result">
+            <div class="demo-score-block">
+              <span class="demo-score" id="demo-score">0 / 100</span>
+              <span class="badge" id="demo-level" data-level="LOW">LOW</span>
+            </div>
+            <ul class="demo-flags" id="demo-flags" aria-label="Red flags found in the example"></ul>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="problem" aria-labelledby="problem-title">
+      <div class="container narrow">
+        <h2 id="problem-title">Fake job offers go after people who are eager to start</h2>
+        <p>Fraudulent recruiters write convincing messages to students and job seekers. They ask for a "registration fee", a one-time password or bank details, or push the conversation onto WhatsApp or Telegram. By the time the pattern is obvious, the money or the personal data is usually gone.</p>
+        <p>JobShield gives you a second opinion in seconds, with the reasoning shown, so you can decide what to do with the offer.</p>
+      </div>
+    </section>
+
+    <section id="how" class="features" aria-labelledby="features-title">
+      <div class="container">
+        <h2 id="features-title">What JobShield checks</h2>
+        <div class="card-grid">
+          <article class="card feature">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <h3>17 fraud indicators</h3>
+            <p>Fee and deposit requests, OTP and bank-detail requests, unrealistic pay, guaranteed jobs, pressure tactics, chat-app recruiting, suspicious email domains and more.</p>
+          </article>
+          <article class="card feature">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Explainable scoring</h3>
+            <p>Each indicator adds a fixed number of points to a 0 to 100 score. You see the quoted phrase, the reason, and the points, so nothing is a black box.</p>
+          </article>
+          <article class="card feature">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="9.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <h3>Private by default</h3>
+            <p>The analysis runs in your browser. Text is sent to a server only if the optional AI review is switched on for this deployment.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analyzer -->
+    <section id="analyzer" class="analyzer" aria-labelledby="analyzer-title">
+      <div class="container narrow">
+        <h2 id="analyzer-title">Analyze a job offer</h2>
+        <p class="section-intro">Paste the job description, the recruiter's message or the whole email.</p>
+
+        <form id="analyzer-form" class="analyzer-form" novalidate>
+          <label class="field-label" for="offer-text">Job description, recruitment message or email</label>
+          <textarea id="offer-text" name="offer-text" rows="12" maxlength="8000" spellcheck="false" aria-describedby="char-count form-error privacy-note" placeholder="Paste the text here, for example: &quot;Congratulations, you have been selected. Pay a registration fee to confirm your seat...&quot;"></textarea>
+
+          <div class="field-meta">
+            <p id="form-error" class="form-error" role="alert" hidden></p>
+            <p id="char-count" class="char-count" aria-live="off">0 / 8,000</p>
+          </div>
+
+          <div class="samples" role="group" aria-label="Load an example">
+            <span class="samples-label">Try an example:</span>
+            <button type="button" class="chip-btn" data-sample="suspicious">Suspicious offer</button>
+            <button type="button" class="chip-btn" data-sample="borderline">Borderline offer</button>
+            <button type="button" class="chip-btn" data-sample="legit">Legitimate offer</button>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="analyze-btn" class="btn btn-primary" aria-busy="false">
+              <span class="spinner" aria-hidden="true"></span>
+              <span id="analyze-label">Analyze</span>
+            </button>
+            <button type="button" id="clear-btn" class="btn btn-secondary">Clear</button>
+          </div>
+
+          <p id="privacy-note" class="note">The analysis runs in your browser. If the optional AI review is enabled on this deployment, the text is also sent to the site's server function and the AI provider. This tool provides a risk assessment and should not replace independent verification.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results" class="results" hidden tabindex="-1" aria-labelledby="results-title" data-level="LOW">
+      <div class="container">
+        <h2 id="results-title" class="results-title">Analysis result</h2>
+
+        <div class="verdict">
+          <div class="score-ring">
+            <svg viewBox="0 0 140 140" aria-hidden="true" focusable="false">
+              <circle class="ring-track" cx="70" cy="70" r="60"/>
+              <circle class="ring-value" id="ring-value" cx="70" cy="70" r="60"/>
+            </svg>
+            <div class="score-text" aria-hidden="true">
+              <span class="score-number" id="score-number">0</span>
+              <span class="score-max">out of 100</span>
+            </div>
+          </div>
+          <div class="verdict-body">
+            <p class="verdict-label">Risk level</p>
+            <p><span class="badge badge-lg" id="level-badge">LOW</span></p>
+            <p class="verdict-summary" id="verdict-summary"></p>
+            <p class="verdict-meta" id="verdict-meta"></p>
+          </div>
+        </div>
+
+        <h3 class="block-title">Why this was flagged</h3>
+        <div class="flag-grid" id="flag-list"></div>
+        <div class="empty-state" id="no-flags" hidden>
+          <p><strong>No red flags were detected.</strong> The message does not match any of the fraud patterns JobShield looks for. That is a good sign, not a guarantee, so still verify the employer.</p>
+        </div>
+
+        <div id="positives" hidden>
+          <h3 class="block-title">Reassuring signs</h3>
+          <ul class="positive-list" id="positive-list"></ul>
+        </div>
+
+        <h3 class="block-title">Safety recommendations</h3>
+        <ul class="reco-list" id="reco-list"></ul>
+
+        <details class="annotated-wrap" id="annotated-wrap">
+          <summary>See your message with the flagged phrases highlighted</summary>
+          <div class="annotated" id="annotated" tabindex="0" role="region" aria-label="Your message with flagged phrases highlighted"></div>
+        </details>
+
+        <p class="disclaimer">This tool provides a risk assessment and should not replace independent verification.</p>
+
+        <button type="button" id="again-btn" class="btn btn-primary">Analyze Another Offer</button>
+      </div>
+    </section>
+
+    <p id="sr-status" class="visually-hidden" role="status" aria-live="polite"></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p class="footer-brand">AI JobShield</p>
+      <p>AI-powered recruitment fraud risk assessment</p>
+      <p>Cybersecurity Track</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
